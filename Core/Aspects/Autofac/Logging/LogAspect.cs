@@ -26,9 +26,18 @@ namespace Core.Aspects.Autofac.Logging
             _loggerServiceBase = (LoggerServiceBase)Activator.CreateInstance(loggerService);
         }
 
+        protected override void OnAfter(IInvocation invocation)
+        {
+            var data = GetLogDetail(invocation);
+            if (invocation.ReturnValue == null)
+                return;
+            data.Response = invocation.ReturnValue;
+            _loggerServiceBase.Info(data);
+        }
+
         protected override void OnBefore(IInvocation invocation)
         {
-            _loggerServiceBase.Info(GetLogDetail(invocation));
+            //_loggerServiceBase.Info(GetLogDetail(invocation));
         }
 
         private LogDetail GetLogDetail(IInvocation invocation)

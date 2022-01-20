@@ -33,5 +33,10 @@ namespace Core.Aspects.Autofac.Validation
                 ValidationTool.Validate(validator, entity);
             }
         }
+
+        public override void Intercept(IInvocation invocation)
+        {
+            base.Intercept(invocation);
+        }
     }
 }

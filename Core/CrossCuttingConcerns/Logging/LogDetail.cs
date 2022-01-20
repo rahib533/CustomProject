@@ -10,6 +10,8 @@ namespace Core.CrossCuttingConcerns.Logging.Log4Net
     {
         public string MethodName { get; set; }
         public List<LogParameter> LogParameters { get; set; }
+        public object Response { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
 
     }
 }

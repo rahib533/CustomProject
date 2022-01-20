@@ -49,6 +49,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.SuccessOperation);
         }
 
+        [SecuredOperation("add")]
         //[CacheAspect]
         [PerformanceAspect(5)]
         [LogAspect(typeof(FileLogger))]
